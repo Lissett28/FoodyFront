@@ -8,4 +8,4 @@ Foody is a full stack application to help people choose restaurants.
 
 ### License
 
-React is [Apache License 2.0](./LICENSE).
+Foody is [Apache License 2.0](./LICENSE).
