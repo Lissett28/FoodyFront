@@ -1,4 +1,4 @@
-# Foody &middot; [![GitHub license](https://img.shields.io/hexpm/l/apa)](https://github.com/Junhe-Chen-9/Foody/blob/main/LICENSE)
+# [Foody](https://github.com/Junhe-Chen-9/Foody) &middot; [![GitHub license](https://img.shields.io/hexpm/l/apa)](https://github.com/Junhe-Chen-9/Foody/blob/main/LICENSE)
 
 Foody is a full stack application to help people choose restaurants.
 
