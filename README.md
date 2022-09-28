@@ -1,1 +1,7 @@
 # Foody
+Foody is a full stack application to help people choose restaurants.
+* **Cooperative:** Foody makes it painless to decide which restaurants to go in seconds while considering everyones preferences and health eating needs.
+* **Machine Learning:** Foody will efficiently updates user profile to constantly improve the accuracy of the recommendations, making sure user have the best experiences. 
+### License
+
+React is [Apache License 2.0](./LICENSE).
