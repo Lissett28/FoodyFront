@@ -3,6 +3,7 @@ package com.seniorproject.foody.controllers;
 import com.seniorproject.foody.entities.Restaurant;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 @CrossOrigin("http://localhost:3300")//react is at 3300
 @RestController
@@ -14,7 +15,7 @@ public class APIController {
                                                           @PathVariable("radius") String radius){
 
 
-
+        String url="https://api.yelp.com/v3";
         return address + "and" + radius;
     }
 }
