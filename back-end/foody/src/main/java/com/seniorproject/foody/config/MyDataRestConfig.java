@@ -1,6 +1,6 @@
 package com.seniorproject.foody.config;
 
-import com.seniorproject.foody.entities.Restaurant;
+import com.seniorproject.foody.entities.Business;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
@@ -27,7 +27,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         RepositoryRestConfigurer.super.configureRepositoryRestConfiguration(config, cors);
         HttpMethod[] theUnspportedActions = {HttpMethod.PUT,HttpMethod.POST,HttpMethod.DELETE};
 
-        disableHttpMethods(Restaurant.class,config, theUnspportedActions);
+        disableHttpMethods(Business.class,config, theUnspportedActions);
 
 
 

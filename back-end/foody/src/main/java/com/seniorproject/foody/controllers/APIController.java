@@ -1,12 +1,15 @@
 package com.seniorproject.foody.controllers;
 
-import com.seniorproject.foody.entities.Restaurant;
-import org.springframework.hateoas.EntityModel;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.seniorproject.foody.entities.Business;
+import com.seniorproject.foody.entities.ResponseResult;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.io.IOException;
 import java.util.List;
 
 @CrossOrigin("http://localhost:3300")//react is at 3300
@@ -15,33 +18,44 @@ import java.util.List;
 public class APIController {
 
     @GetMapping(value="find/{address}&{radius}",produces = "application/json")
-    public List<Object> findByAddressAndRadius(@PathVariable("address") String address,
-                                                          @PathVariable("radius") String radius){
+    public ResponseResult findByAddressAndRadius(@PathVariable("address") String address,
+                                               @PathVariable("radius") String radius) throws IOException {
 
 
 
 
         // api constants
         String api_host = "https://api.yelp.com";
-        String search_path = "/v3/businesses/search";
         String bussinese_path = "/v3/businesses/";
-
         // search terms
         String term = "dinner";
-        String location = "Los+Angeles,+CA";
-        int search_limits = 3; // limit to display 3 items
+        String location = address;
+        int rad = Integer.valueOf(radius);
+        String search_url = api_host + bussinese_path + "search?" + "term=" + term + "&" + "location=" + location + "&" + "radius=" + rad;
 
-        return search(api_host,bussinese_path,term,location);
+        OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+        Request request = new Request.Builder()
+                .url(search_url)
+                .addHeader("Authorization", "Bearer <api-key-here>")
+                .build();
+
+        Response response = client.newCall(request).execute();
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        ResponseBody responseBody = response.body();
+        ResponseResult responseResult = objectMapper.readValue(responseBody.string(), ResponseResult.class);
+
+        responseResult = pick3(responseResult);
+        return responseResult;
     }
-    private List<Object> request(String host, String path, String url){
-        url = host.concat(path);
-        RestTemplate restTemplate = new RestTemplate();
-        Object[] response = restTemplate.getForObject(url,Object[].class);
-        return Arrays.asList(response);
+    private ResponseResult pick3(ResponseResult responseResult){
+        List<Business> businesses = responseResult.getBusinesses();
+        // we would pick top 3 for example
+        ResponseResult res = new ResponseResult();
+        res.setBusinesses(businesses.subList(0,3));
+        return res;
     }
 
-    private List<Object> search(String host,String path, String term,String locations){
-        String search_url = "term" + term + "location" + locations + "limit" + 3;
-        return request(host,path,search_url);
-    }
 }
