@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 
 @CrossOrigin("http://localhost:3300")//react is at 3300
 @RestController
@@ -37,7 +38,7 @@ public class APIController {
                 .build();
         Request request = new Request.Builder()
                 .url(search_url)
-                .addHeader("Authorization", "Bearer <api-key-here>")
+                .addHeader("Authorization", "Bearer <api-key>")
                 .build();
 
         Response response = client.newCall(request).execute();
@@ -47,14 +48,15 @@ public class APIController {
         ResponseBody responseBody = response.body();
         ResponseResult responseResult = objectMapper.readValue(responseBody.string(), ResponseResult.class);
 
-        responseResult = pick3(responseResult);
+        responseResult = randomPicker(responseResult);
         return responseResult;
     }
-    private ResponseResult pick3(ResponseResult responseResult){
+    private ResponseResult randomPicker(ResponseResult responseResult){
         List<Business> businesses = responseResult.getBusinesses();
         // we would pick top 3 for example
         ResponseResult res = new ResponseResult();
-        res.setBusinesses(businesses.subList(0,3));
+        Random rand = new Random();
+        res.setBusinesses(List.of(businesses.get(rand.nextInt(businesses.size()))));
         return res;
     }
 
