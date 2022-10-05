@@ -1,24 +1,15 @@
 package com.seniorproject.foody.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.seniorproject.foody.entities.Restaurant;
-import net.minidev.json.JSONArray;
-import net.minidev.json.JSONObject;
-import okhttp3.*;
-import okhttp3.MediaType;
+import com.seniorproject.foody.entities.Business;
+import com.seniorproject.foody.entities.ResponseResult;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
-import org.springframework.hateoas.EntityModel;
-import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
-import java.io.*;
+
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @CrossOrigin("http://localhost:3300")//react is at 3300
@@ -27,7 +18,7 @@ import java.util.List;
 public class APIController {
 
     @GetMapping(value="find/{address}&{radius}",produces = "application/json")
-    public String findByAddressAndRadius(@PathVariable("address") String address,
+    public ResponseResult findByAddressAndRadius(@PathVariable("address") String address,
                                                @PathVariable("radius") String radius) throws IOException {
 
 
@@ -50,15 +41,21 @@ public class APIController {
                 .build();
 
         Response response = client.newCall(request).execute();
-        /* mapping to business entity
-        ObjectMapper objectMapper = new ObjectMapper();
-        ResponseBody responseBody = response.body();
-        Business business = objectMapper.readValue(responseBody.string(), Busness.class);
 
-        Assert.assertNotNull(business);
-        Assert.assertEquals(sampleResponse.getName(), business.getName());
-        */
-        return response.body().string();
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        ResponseBody responseBody = response.body();
+        ResponseResult responseResult = objectMapper.readValue(responseBody.string(), ResponseResult.class);
+
+        responseResult = pick3(responseResult);
+        return responseResult;
+    }
+    private ResponseResult pick3(ResponseResult responseResult){
+        List<Business> businesses = responseResult.getBusinesses();
+        // we would pick top 3 for example
+        ResponseResult res = new ResponseResult();
+        res.setBusinesses(businesses.subList(0,3));
+        return res;
     }
 
 }
