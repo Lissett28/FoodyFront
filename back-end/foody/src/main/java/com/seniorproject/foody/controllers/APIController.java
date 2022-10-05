@@ -1,5 +1,6 @@
 package com.seniorproject.foody.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.seniorproject.foody.entities.Restaurant;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
@@ -9,7 +10,9 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import java.io.*;
@@ -25,7 +28,7 @@ public class APIController {
 
     @GetMapping(value="find/{address}&{radius}",produces = "application/json")
     public String findByAddressAndRadius(@PathVariable("address") String address,
-                                                          @PathVariable("radius") String radius) throws IOException {
+                                               @PathVariable("radius") String radius) throws IOException {
 
 
 
@@ -43,10 +46,18 @@ public class APIController {
                 .build();
         Request request = new Request.Builder()
                 .url(search_url)
-                .addHeader("Authorization", "Bearer g8zhjraNOTgdIRg6MdVB0uKbAx_7tMjNe2AOges9qIWvTAke1HE0Lgllj_yo88BG1mr-OSsU_AdxlngZ6OaoqV1pXhdBp4eeTw_uCDpgY6O_wZGsTscznBI-Xig3Y3Yx")
+                .addHeader("Authorization", "Bearer <api-key-here>")
                 .build();
-        Response response = client.newCall(request).execute();
 
+        Response response = client.newCall(request).execute();
+        /* mapping to business entity
+        ObjectMapper objectMapper = new ObjectMapper();
+        ResponseBody responseBody = response.body();
+        Business business = objectMapper.readValue(responseBody.string(), Busness.class);
+
+        Assert.assertNotNull(business);
+        Assert.assertEquals(sampleResponse.getName(), business.getName());
+        */
         return response.body().string();
     }
 
