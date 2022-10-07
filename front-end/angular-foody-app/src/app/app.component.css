@@ -1,0 +1,23 @@
+/* main page style*/
+:host{
+    /* css variables */
+    /* for easy to update the page colors */
+
+    /* colors */
+    --color-bg: yellow;
+    --color-bg-variant: yellow;
+    --color-primary: #003366;
+    --color-primary-variant: #003153;
+    --color-white:#fff;
+    --color-black:rgb(0, 0, 0);
+    --color-light:rgb(255, 255, 255);
+
+    /* container */
+    --container-width-lg: 75%;
+    --container-width-md: 86%;
+    --container-width-sm: 90%;
+
+    /* transition */
+    --transition: all 400ms ease;
+
+}
