@@ -1,23 +1,45 @@
-import { Outlet, NavLink, Form, useLoaderData, useNavigation, redirect } from "react-router-dom";
+import axios from "axios";
+import { Outlet, NavLink, useSubmit, useLoaderData, useNavigation, redirect } from "react-router-dom";
 import { getRestaurants, createRestaurant } from "../restaurants"
 
 export default function Root() {
   const { restaurants } = useLoaderData();
   const navigation = useNavigation();
 
+  const handleYelpSearch = event => {
+    event.preventDefault();
+    const form = event.target
+    console.log(event.target);
+    const query = `${form.address.value}&${form.radius.value}`;
+    axios.get('http://localhost:8080/api/locate/find/' + query)
+    .then(res => {
+      createRestaurant(res.data.businesses[0]);
+      return redirect('/');
+    })
+    .catch(err => { console.log(err)});
+    }
+  
+
   return (
     <>
       <div id="sidebar">
         <h1>Foody</h1>
         <div>
-          <form id="search-form" role="search">
-            <input
-              id="q"
-              aria-label="Search for restaurants"
-              placeholder="Search"
+          <form id="search-form" onSubmit={handleYelpSearch} role="search">
+            <label>Your address: <input
+              id="address"
+              aria-label="Enter your address"
+              placeholder="Enter your address"
               type="search"
-              name="q"
-            />
+              name="address"
+            /></label>
+            <label>Radius to search (meters) <input
+              id="radius"
+              aria-label="Search radius"
+              placeholder="1"
+              type="number"
+              name="radius"
+            /></label>
             <div
               id="search-spinner"
               aria-hidden
@@ -27,10 +49,11 @@ export default function Root() {
               className="sr-only"
               aria-live="polite"
             ></div>
+            <button type="submit">Search</button>
           </form>
-          <Form method="post">
-            <button type="submit">New</button>
-          </Form>
+
+            
+          
         </div>
         
         <nav>
@@ -79,7 +102,9 @@ export async function loader() {
   return { restaurants };
 }
 
-export async function action() {
-  const place = await createRestaurant();
-  return redirect(`/places/${place.id}/edit`);
+export async function action( { request }) {
+  const formData = await request.formData();
+  const placeData = Object.fromEntries(formData);
+  const place = await createRestaurant(placeData);
+  return redirect(`/places/${place.id}/`);
 }

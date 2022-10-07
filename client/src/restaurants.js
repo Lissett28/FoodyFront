@@ -12,10 +12,16 @@ export async function getRestaurants(query) {
   return restaurants.sort(sortBy("last", "createdAt"));
 }
 
-export async function createRestaurant() {
+export async function createRestaurant(place) {
   await fakeNetwork();
   let id = Math.random().toString(36).substring(2, 9);
-  let restaurant = { id, createdAt: Date.now() };
+  let restaurant = {
+    id, 
+    createdAt: Date.now(), 
+    name: place.name,
+    website:place.url,
+    address: place.display_address
+  };
   let restaurants = await getRestaurants();
   restaurants.unshift(restaurant);
   await set(restaurants);

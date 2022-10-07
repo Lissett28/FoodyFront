@@ -7,34 +7,8 @@ export default function EditRestaurant() {
   return (
     <Form method="post" id="place-form">
       <p>
-        <span>Name</span>
-        <input
-          placeholder="Name"
-          aria-label="Name"
-          type="text"
-          name="name"
-          defaultValue={restaurant.name}
-        />
+        {restaurant.name}
       </p>
-      <label>
-        <span>Website</span>
-        <input
-          type="text"
-          name="website"
-          placeholder="https://www.csun.edu"
-          defaultValue={restaurant.website}
-        />
-      </label>
-      <label>
-        <span>Avatar URL</span>
-        <input
-          placeholder="https://example.com/avatar.jpg"
-          aria-label="Avatar URL"
-          type="text"
-          name="avatar"
-          defaultValue={restaurant.avatar}
-        />
-      </label>
       <label>
         <span>Notes</span>
         <textarea

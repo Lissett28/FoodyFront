@@ -6,13 +6,6 @@ export default function Restaurant() {
 
   return (
     <div id="place">
-      <div>
-        <img
-          key={place.avatar}
-          src={place.avatar || null}
-          alt="Placeholder"
-        />
-      </div>
 
       <div>
         <h1>
@@ -36,6 +29,10 @@ export default function Restaurant() {
               { place.website }
             </a>
           </p>
+        )}
+
+        {place.address && (
+          <p>{place.address}</p>
         )}
 
         {place.notes && <p>{place.notes}</p>}
