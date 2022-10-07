@@ -7,6 +7,8 @@ import { HomepageComponent } from './component/homepage/homepage.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { HeaderComponent } from './component/header/header.component';
+import { AboutComponent } from './component/about/about.component';
+import { ContactComponent } from './component/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,8 @@ import { HeaderComponent } from './component/header/header.component';
     BodyComponent,
     HomepageComponent,
     HeaderComponent,
+    AboutComponent,
+    ContactComponent,
     
   ],
   imports: [
