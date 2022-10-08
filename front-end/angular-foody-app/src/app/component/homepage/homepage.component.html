@@ -1,0 +1,31 @@
+<div class="container main__container">
+    <div class="container form__container">
+        <form [formGroup]="searchFormGroup" (ngSubmit)="search()">
+            <div class="area form__area" formGroupName="searchInfo">
+                <div class="input form__input">Enter Your Address </div>
+                <div class="input input__space">
+                    <input formControlName="address" type="text">
+                </div>
+                <div class="input form__input">Selecte How far you wanna to drive</div>
+                <div class="input input__space">
+                    <select formControlName="radius" type="text">
+                        <option value="5000">5000meter</option>
+                        <option value="10000">10000meter</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- submit button-->
+            <div class="container button__container">
+                <button type="subtmit" class="btn btn__submit">Search</button>
+            </div>
+        </form>
+        <div class="container display__container" *ngFor="let tempBusiness of businesses">
+            <div class="card business__card">
+                <p>{{ tempBusiness.name }}</p>
+                <p>{{ tempBusiness.price}}</p>
+                <img [src]="tempBusiness.image_url" alt="">
+            </div>
+        </div>
+    </div>
+</div>

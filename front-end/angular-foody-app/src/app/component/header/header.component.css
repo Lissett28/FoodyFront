@@ -1,0 +1,27 @@
+.header__container{
+    background: rgb(173,10,91);
+    background: linear-gradient(90deg, rgba(173,10,91,1) 5%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    color: white;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+ul{
+    display: block;
+}
+nav{
+    /* put to top */
+    z-index: 2;
+    display: block;
+    display: flex;
+    padding: 16px;
+}
+ul{
+    list-style: none;
+    display: flex;
+    padding-left: 2rem;
+}
+li{
+    padding-left: 1rem;
+}
