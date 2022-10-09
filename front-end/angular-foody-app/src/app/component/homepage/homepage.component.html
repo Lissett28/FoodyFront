@@ -23,6 +23,7 @@
         <div class="container display__container" *ngFor="let tempBusiness of businesses">
             <div class="card business__card">
                 <p>{{ tempBusiness.name }}</p>
+                <p>{{ tempBusiness.url}}</p>
                 <p>{{ tempBusiness.price}}</p>
                 <img [src]="tempBusiness.image_url" alt="">
             </div>
