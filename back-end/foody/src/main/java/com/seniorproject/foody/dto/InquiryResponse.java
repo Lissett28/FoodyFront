@@ -4,5 +4,5 @@ import lombok.Data;
 
 @Data
 public class InquiryResponse {
-    private final String InquiryTrackingNumber;
+    private final String inquiryTrackingNumber;
 }

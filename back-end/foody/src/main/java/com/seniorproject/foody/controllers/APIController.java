@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
-@CrossOrigin("http://localhost:4200")//react is at 3300
+@CrossOrigin("http://localhost:4200")
 @RestController
 @RequestMapping("/api/locate")
 
