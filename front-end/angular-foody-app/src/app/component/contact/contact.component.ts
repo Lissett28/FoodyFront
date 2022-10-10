@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Customer } from 'src/app/common/customer';
 import { Inquiry } from 'src/app/common/inquiry';
+import { InquiryDetail } from 'src/app/common/inquiry-detail';
+import { InquiryInstruction } from 'src/app/common/inquiry-instruction';
 import { ContactService } from 'src/app/service/contact.service';
 
 @Component({
@@ -70,18 +72,19 @@ export class ContactComponent implements OnInit {
     customer.firstName = this.contactFormGroup.get('_customer.firstName').value;
     customer.lastName = this.contactFormGroup.get('_customer.lastName').value;
     customer.email = this.contactFormGroup.get('_customer.email').value;
-    let inquiry = new Inquiry();
-    
+    let inquiry = new Inquiry; 
     inquiry.customer = customer;
-    inquiry.message = this.contactFormGroup.get('message.theMessage').value;
-    
-    console.log(inquiry.customer);
-    console.log(inquiry.message);
+    let details:InquiryDetail[] =[];
+    details.push(new InquiryDetail(this.contactFormGroup.get('message.theMessage').value));
+    let inquiryInstruction = new InquiryInstruction();
+    inquiryInstruction.customer = customer;
+    inquiryInstruction.inquiry = inquiry;
+    inquiryInstruction.inquiryDetails = details;
     // call the REST API via contactService
   
-    this.contactService.makeInquiry(inquiry).subscribe({
+    this.contactService.makeInquiry(inquiryInstruction).subscribe({
       next: response =>{
-        alert(`We have recived your inquiry \n tracking number: ${response.tracking}`);
+        alert(`We have recived your inquiry \n tracking number: ${response.inquiryTrackingNumber}`);
         // reset the form
         this.resetForm;
       },
