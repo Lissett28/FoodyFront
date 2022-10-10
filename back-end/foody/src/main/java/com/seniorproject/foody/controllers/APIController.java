@@ -39,7 +39,7 @@ public class APIController {
                 .build();
         Request request = new Request.Builder()
                 .url(search_url)
-                .addHeader("Authorization", "Bearer -cs0DFSzw1AdN4l9OS7cWTd1aUzaeXsuXa-Hjh_gv1zWo_iYFZ42d2KqRg6NfjR6Q5xikzlsIc-C46eKxVC3WHWJvQqQQVRAKMR7M7f2XqgbqqN_8ZkXT7DTt8c8Y3Yx")
+                .addHeader("Authorization", "Bearer <api-key>")
                 .build();
 
         Response response = client.newCall(request).execute();
