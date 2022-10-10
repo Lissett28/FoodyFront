@@ -17,7 +17,7 @@ public class Business {
 
     String name;
 
-    String img_url;
+    String image_url;
 
     Boolean is_closed;
 
@@ -43,7 +43,7 @@ public class Business {
         this.id = id;
         this.alias = alias;
         this.name = name;
-        this.img_url = img_url;
+        this.image_url = image_url;
         this.is_closed = is_closed;
         this.url = url;
         this.review_count = review_count;

@@ -1,4 +1,7 @@
 package com.seniorproject.foody.dao;
 
-public interface CustomerRepository extends org.springframework.data.jpa.repository.JpaRepository<com.seniorproject.foody.entities.Customer, java.lang.Long> {
+import com.seniorproject.foody.entities.Customer;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
 }

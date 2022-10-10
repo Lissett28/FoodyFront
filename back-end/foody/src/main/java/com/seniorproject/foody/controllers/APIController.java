@@ -13,9 +13,10 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
-@CrossOrigin("http://localhost:3300")//react is at 3300
+@CrossOrigin("http://localhost:4200")//react is at 3300
 @RestController
 @RequestMapping("/api/locate")
+
 public class APIController {
 
     @GetMapping(value="find/{address}&{radius}",produces = "application/json")
@@ -38,7 +39,7 @@ public class APIController {
                 .build();
         Request request = new Request.Builder()
                 .url(search_url)
-                .addHeader("Authorization", "Bearer <api-key>")
+                .addHeader("Authorization", "Bearer -cs0DFSzw1AdN4l9OS7cWTd1aUzaeXsuXa-Hjh_gv1zWo_iYFZ42d2KqRg6NfjR6Q5xikzlsIc-C46eKxVC3WHWJvQqQQVRAKMR7M7f2XqgbqqN_8ZkXT7DTt8c8Y3Yx")
                 .build();
 
         Response response = client.newCall(request).execute();

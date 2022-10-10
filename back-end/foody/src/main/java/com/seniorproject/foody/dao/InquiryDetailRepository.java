@@ -1,4 +1,7 @@
 package com.seniorproject.foody.dao;
 
-public interface InquiryDetailRepository extends org.springframework.data.jpa.repository.JpaRepository<com.seniorproject.foody.entities.InquiryDetail, java.lang.Long> {
+import com.seniorproject.foody.entities.InquiryDetail;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface InquiryDetailRepository extends JpaRepository<InquiryDetail, Long> {
 }

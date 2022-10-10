@@ -1,2 +1,38 @@
-package com.seniorproject.foody.entities;public class Customer {
+package com.seniorproject.foody.entities;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Table(name ="customer")
+@Getter
+@Setter
+public class Customer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
+    private Long id;
+
+    @Column(name="first_name")
+    private String firstName;
+
+    @Column(name="last_name")
+    private String lastName;
+
+    @Column(name="email")
+    private String email;
+
+    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
+    private Set<Inquiry> inquiries = new HashSet<>();
+
+    public void addInquiry(Inquiry inquiry){
+        if(inquiry != null){
+            inquiries.add(inquiry);
+            inquiry.setCustomer(this);
+        }
+    }
 }
