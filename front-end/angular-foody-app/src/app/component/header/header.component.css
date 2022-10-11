@@ -1,7 +1,20 @@
+
 .header__container{
-    background: rgb(173,10,91);
-    background: linear-gradient(90deg, rgba(173,10,91,1) 5%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    font-family: 'Silkscreen', cursive;
+    background: var(--color-primary);
     color: white;
+    display: grid;
+    grid-template-columns: 70% 10%;
+    gap: 20%;
+}
+.logo__container{
+    height: 70%;
+}
+img{
+    height: 50px;
+    position: relative;
+    top: 30%;
+    bottom: 50%;
 }
 a{
     text-decoration: none;
@@ -16,6 +29,8 @@ nav{
     display: block;
     display: flex;
     padding: 16px;
+   
+
 }
 ul{
     list-style: none;
@@ -25,3 +40,4 @@ ul{
 li{
     padding-left: 1rem;
 }
+

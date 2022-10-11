@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Titan+One&display=swap');
+
 *{
     /* style resets*/
     margin:0;
@@ -18,11 +20,11 @@
     /* colors */
     --color-bg: white;
     --color-bg-variant: #2a9d8f;
-    --color-primary: #e76f51;
+    --color-primary: #7a7a7ae5;
     --color-primary-variant: #f4a261;
     --color-white:#fff;
     --color-black:rgb(0, 0, 0);
-    --color-light:#e9c46a;
+    --color-light:#0004ff;
     
 
     /* container */

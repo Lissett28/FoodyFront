@@ -1,4 +1,4 @@
-export class Location {
+export class Locationmap {
     address1:string;
     address2:string;
     address3:string;

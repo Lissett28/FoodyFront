@@ -31,6 +31,7 @@ export class HomepageComponent implements OnInit {
     this.searchService.searchBusinesses(ad,rd).subscribe(
       data =>{
         this.businesses = data;
+        
         console.log(this.businesses);
         console.log(this.businesses[0].image_url)
       }

@@ -1,5 +1,7 @@
 import { Category } from "./category";
+import { Locationmap } from "./locationmap";
 import { Transaction } from "./transaction";
+
 
 export class Business {
     id: string;
@@ -13,7 +15,7 @@ export class Business {
     rating:number;
     transactions:Transaction[];
     price:string;
-    location:Location;
+    location:Locationmap;
     phone:string;
     distance:number;
 }
