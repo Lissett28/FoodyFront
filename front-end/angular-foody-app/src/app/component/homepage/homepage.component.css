@@ -1,0 +1,12 @@
+.main__container{
+    display: grid;
+    grid-template-columns: repeat(2 1fr);
+}
+.form__container{
+    display: block;
+    float: left;
+}
+.display__container{
+    display: block;
+    float: right;
+}
