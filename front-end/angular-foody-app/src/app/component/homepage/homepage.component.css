@@ -1,12 +1,68 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+
+/* style explore */
 .main__container{
     display: grid;
-    grid-template-columns: repeat(2 1fr);
+    grid-template-columns: 35% 50%;
+    gap: 15%;
 }
 .form__container{
-    display: block;
-    float: left;
+    width: 100vh;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background-color: var(--color-black);
+    color: var(--color-light);
+}
+
+.form__container h1{
+    font-size: 200px;
+    font-family: 'Titan One', cursive;
 }
 .display__container{
-    display: block;
-    float: right;
+    display: grid;
 }
+.form__input{
+    margin: 10px;
+}
+input,select{
+    border-radius: 0.5rem;
+    width: 200px;
+    height: 20px;
+    margin: 10px;
+}
+/* btn style */
+.btn{
+    width: max-content;
+    margin-top: 20px;
+    display: inline-block;
+    background-color: var(--color-light);
+    padding: 0.75rem 3rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    border: 1px solid var(--color-light);
+    transition: var(--transition);
+}
+
+.btn:hover {
+    background: var(--color-black);
+    color: var(--color-bg);
+    border: 1px solid var(--color-light);
+}
+
+
+
+/* MEDIA QUERIES */
+
+/* MD DEVICES */
+@media screen and (max-width:1024px) {
+
+    
+ }
+ 
+ /* SM DEVICES */
+ @media screen and (max-width:600px) {
+ 
+    
+ }

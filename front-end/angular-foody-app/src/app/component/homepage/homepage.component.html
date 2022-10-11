@@ -1,5 +1,8 @@
 <div class="container main__container">
     <div class="container form__container">
+        
+        <h1>Foody</h1>
+        <h2>Let me pick the food so you don't have to !</h2>
         <form [formGroup]="searchFormGroup" (ngSubmit)="search()">
             <div class="area form__area" formGroupName="searchInfo">
                 <div class="input form__input">Enter Your Address </div>
@@ -20,13 +23,15 @@
                 <button type="subtmit" class="btn btn__submit">Search</button>
             </div>
         </form>
-        <div class="container display__container" *ngFor="let tempBusiness of businesses">
-            <div class="card business__card">
-                <p>{{ tempBusiness.name }}</p>
-                <p>{{ tempBusiness.url}}</p>
-                <p>{{ tempBusiness.price}}</p>
-                <img [src]="tempBusiness.image_url" alt="">
-            </div>
+    </div>
+
+    <div class="container display__container" *ngFor="let tempBusiness of businesses">
+        <div class="card business__card">
+            <p>{{ tempBusiness.name }}</p>
+            <p>{{ tempBusiness.url}}</p>
+            <p>{{ tempBusiness.price}}</p>
+            <img [src]="tempBusiness.image_url" alt="">
         </div>
     </div>
+
 </div>
