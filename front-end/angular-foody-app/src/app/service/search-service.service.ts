@@ -8,7 +8,7 @@ import { Business } from '../common/business';
 })
 export class SearchServiceService {
   // base url
-  private baseUrl ="http://localhost:8080/api/"
+  private baseUrl ="http://localhost:8080/api/v1/"
   // type of api call 
   
 

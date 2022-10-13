@@ -5,10 +5,12 @@ import { AppComponent } from './app.component';
 import { BodyComponent } from './component/body/body.component';
 import { HomepageComponent } from './component/homepage/homepage.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { HeaderComponent } from './component/header/header.component';
 import { AboutComponent } from './component/about/about.component';
 import { ContactComponent } from './component/contact/contact.component';
+import { LoginComponent } from './component/login/login.component';
+import { HttpInterceptorService } from './service/http-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { ContactComponent } from './component/contact/contact.component';
     HeaderComponent,
     AboutComponent,
     ContactComponent,
+    LoginComponent,
     
   ],
   imports: [
@@ -27,7 +30,13 @@ import { ContactComponent } from './component/contact/contact.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

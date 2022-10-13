@@ -9,7 +9,7 @@ import { InquiryInstruction } from '../common/inquiry-instruction';
 export class ContactService {
 
   // base url
-  private baseUrl ="http://localhost:8080/api/"
+  private baseUrl ="http://localhost:8080/api/v1/"
 
   constructor(private httpClient:HttpClient) { }
 
