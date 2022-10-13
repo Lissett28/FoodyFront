@@ -1,4 +1,4 @@
-package com.seniorproject.foody.entities;
+package com.seniorproject.foody.dto;
 
 import lombok.*;
 import org.springframework.stereotype.Service;

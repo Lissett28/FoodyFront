@@ -15,7 +15,7 @@ import java.util.Random;
 
 @CrossOrigin("http://localhost:4200")
 @RestController
-@RequestMapping("/api/locate")
+@RequestMapping("/api/v1/locate")
 
 public class APIController {
 
@@ -39,7 +39,7 @@ public class APIController {
                 .build();
         Request request = new Request.Builder()
                 .url(search_url)
-                .addHeader("Authorization", "Bearer <api-key>")
+                .addHeader("Authorization", "Bearer api-key")
                 .build();
 
         Response response = client.newCall(request).execute();

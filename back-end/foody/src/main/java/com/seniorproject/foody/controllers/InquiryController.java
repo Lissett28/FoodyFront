@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin("http://localhost:4200")
 @RestController
-@RequestMapping("/api/inquiry")
+@RequestMapping("/api/v1/inquiry")
 public class InquiryController {
     @Autowired
     private InquiryService inquiryService;

@@ -10,26 +10,24 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name ="inquiries")
 @Getter
 @Setter
 public class Inquiry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
     private Long id;
 
-    @Column(name="inquiry_tracking_number")
+
     private String inquiryTrackingNumber;
 
-    @Column(name="status")
+
     private String status;
 
-    @Column(name="date_created")
+
     @CreationTimestamp
     private Date date_created;
 
-    @Column(name="last_updated")
+
     @UpdateTimestamp
     private Date last_updated;
 
@@ -45,5 +43,9 @@ public class Inquiry {
             inquiryDetails.add(inquiryDetail);
             inquiryDetail.setInquiry(this);
         }
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }

@@ -1,2 +1,6 @@
-package com.seniorproject.foody.entities;public class AppUserRole {
+package com.seniorproject.foody.entities;
+
+public enum AppUserRole {
+    USER,
+    ADMIN
 }
