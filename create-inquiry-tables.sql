@@ -40,7 +40,7 @@ CREATE TABLE `inquiries` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Table structure for table `inquiry`
+-- Table structure for table `inquiry_detail`customer
 --
 CREATE TABLE `inquiry_detail` (
   `id` bigint NOT NULL AUTO_INCREMENT,
