@@ -3,6 +3,7 @@ package com.seniorproject.foody.services;
 import com.seniorproject.foody.dao.AppUserRepository;
 import com.seniorproject.foody.entities.AppUser;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,6 +17,7 @@ public class AppUserService implements UserDetailsService {
     private final static String USER_NOT_FOUND_MSG = "username %s not found";
     private final AppUserRepository appUserRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -44,4 +46,6 @@ public class AppUserService implements UserDetailsService {
 
         return "it works";
     }
+
+
 }
