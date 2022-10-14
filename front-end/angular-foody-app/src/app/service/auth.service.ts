@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
@@ -6,55 +6,27 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser'
+  authenticated = false;
 
-  username:string;
-  password:string;
-  private baseUrl ="http://localhost:8080/api/v1/"
-
-  constructor(private http:HttpClient) { }
-
-  authenticationService(username:string, password:string){
-    console.log(this.http.get(`${this.baseUrl}basicauth/auth`,
-    {
-      headers:{authorization: this.createBasicAuthToken(username,password)}
-    }).pipe(map((res) => {
-      this.username = username;
-      this.password = password;
-      this.registerSuccessfulLogin(username, password);
-    })))
-    return this.http.get(`${this.baseUrl}basicauth/auth`,
-    {
-      headers:{authorization: this.createBasicAuthToken(username,password)}
-    }).pipe(map((res) => {
-      this.username = username;
-      this.password = password;
-      this.registerSuccessfulLogin(username, password);
-    }));
-  }
-  createBasicAuthToken(username: String, password: String) {
-    return 'Basic ' + window.btoa(username + ":" + password)
-  }
-  registerSuccessfulLogin(username, password) {
-    sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username)
-  }
-  logout() {
-    sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
-    this.username = null;
-    this.password = null;
+  constructor(private http: HttpClient) {
   }
 
-  isUserLoggedIn() {
-    let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME)
-    if (user === null) return false
-    return true
-  }
+  authenticate(credentials, callback) {
+        console.log(credentials? window.btoa(credentials.username + ':' + credentials.password) : "nothing there");
+        const headers = new HttpHeaders(credentials ? {
+            authorization : 'Basic ' + window.btoa(credentials.username + ':' + credentials.password)
+        } : {});
 
-  getLoggedInUserName() {
-    let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME)
-    if (user === null) return ''
-    return user
-  }
+        this.http.get('http://localhost:8080/user', {headers: headers}).subscribe(response => {
+            if (response['name']) {
+                this.authenticated = true;
+            } else {
+                this.authenticated = false;
+            }
+            return callback && callback();
+        });
+
+    }
 }
 
 

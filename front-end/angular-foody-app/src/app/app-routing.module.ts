@@ -7,11 +7,11 @@ import { LoginComponent } from './component/login/login.component';
 
 const routes: Routes = [
   // by defualt we should be route to homepage
-  
+  {path: 'login', component: LoginComponent},
   {path: 'explore', component: HomepageComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'about', component: AboutComponent},
-  {path: '**', component: LoginComponent}
+  {path: '**', component: HomepageComponent}
 ];
 
 @NgModule({

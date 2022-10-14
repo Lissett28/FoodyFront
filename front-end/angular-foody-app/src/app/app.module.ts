@@ -11,6 +11,7 @@ import { AboutComponent } from './component/about/about.component';
 import { ContactComponent } from './component/contact/contact.component';
 import { LoginComponent } from './component/login/login.component';
 import { HttpInterceptorService } from './service/http-interceptor.service';
+import { AuthService } from './service/auth.service';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { HttpInterceptorService } from './service/http-interceptor.service';
     HttpClientModule
   ],
   providers: [
+    AuthService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpInterceptorService,
