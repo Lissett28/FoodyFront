@@ -14,10 +14,10 @@ export class AuthService {
   authenticate(credentials, callback) {
         console.log(credentials? window.btoa(credentials.username + ':' + credentials.password) : "nothing there");
         const headers = new HttpHeaders(credentials ? {
-            authorization : 'Basic ' + window.btoa(credentials.username + ':' + credentials.password)
+            authorization :  window.btoa(credentials.username + ':' + credentials.password)
         } : {});
-
-        this.http.get('http://localhost:8080/user', {headers: headers}).subscribe(response => {
+        
+        this.http.post('http://localhost:8080/api/v1/login', {headers: headers}).subscribe(response => {
             if (response['name']) {
                 this.authenticated = true;
             } else {

@@ -12,12 +12,12 @@ export class LoginComponent {
 
   credentials = {username: '', password: ''};
 
-  constructor(private app: AuthService, private http: HttpClient, private router: Router) {
+  constructor(private authService: AuthService, private http: HttpClient, private router: Router) {
   }
 
   login() {
-    this.app.authenticate(this.credentials, () => {
-        this.router.navigateByUrl('/login');
+    this.authService.authenticate(this.credentials, () => {
+        
     });
     return false;
   }
