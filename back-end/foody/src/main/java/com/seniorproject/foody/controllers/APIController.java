@@ -15,7 +15,7 @@ import java.util.Random;
 
 @CrossOrigin("http://localhost:4200")
 @RestController
-@RequestMapping("/api/v1/locate")
+@RequestMapping("/api/v2/locate")
 
 public class APIController {
 

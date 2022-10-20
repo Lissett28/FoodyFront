@@ -1,5 +1,6 @@
 package com.seniorproject.foody.services;
 
+import com.seniorproject.foody.config.PasswordEncoder;
 import com.seniorproject.foody.dao.AppUserRepository;
 import com.seniorproject.foody.entities.AppUser;
 import lombok.AllArgsConstructor;
@@ -20,7 +21,7 @@ public class AppUserService implements UserDetailsService {
 
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public AppUser loadUserByUsername(String username) throws UsernameNotFoundException {
         return appUserRepository.findByUsername(username)
                 .orElseThrow(() ->
                         new UsernameNotFoundException(
