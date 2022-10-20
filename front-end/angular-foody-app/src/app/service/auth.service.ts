@@ -18,7 +18,7 @@ export class AuthService {
         } : {});
         
         this.http.post('http://localhost:8080/api/v1/login', {headers: headers}).subscribe(response => {
-            if (response['name']) {
+            if (response['displayName']) {
                 this.authenticated = true;
             } else {
                 this.authenticated = false;
