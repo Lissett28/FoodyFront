@@ -1,5 +1,8 @@
 package com.seniorproject.foody.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
@@ -10,6 +13,14 @@ import java.util.UUID;
 @Component
 public class SessionRegistry {
     private static final HashMap<String,String> SESSIONS = new HashMap<>();
+    private final ValueOperations<String,String> redisSessionStorage;
+
+
+    @Autowired
+    public SessionRegistry(final RedisTemplate<String, String> redisTemplate){
+        redisSessionStorage = redisTemplate.opsForValue();
+    }
+
 
     public String registerSession(final String username){
         if (username == null){
@@ -17,16 +28,42 @@ public class SessionRegistry {
         }
 
         String sessionId = generateSessionId();
-        SESSIONS.put(sessionId,username);
+
+        try{
+            redisSessionStorage.set(sessionId,username);
+        }catch(final Exception e){
+            // if redis not running we are using in memory session logging
+            e.printStackTrace();
+            SESSIONS.put(sessionId,username);
+        }
+
         return sessionId;
     }
 
     public String getUsernameForSession(final String sessionId){
-        return SESSIONS.get(sessionId);
+        try{
+            return redisSessionStorage.get(sessionId);
+        }catch(final Exception e){
+            // if redis not running we are using in memory session logging
+            e.printStackTrace();
+            return SESSIONS.get(sessionId);
+        }
+
     }
+
+    public void expireSession(final String sessionId){
+        try {
+            redisSessionStorage.getAndDelete(sessionId);
+        }catch (final Exception e){
+            e.printStackTrace();
+            SESSIONS.remove(sessionId);
+        }
+    }
+
     private String generateSessionId(){
         return new String(
                 Base64.getEncoder().encode(UUID.randomUUID().toString().getBytes(StandardCharsets.UTF_8))
         );
     }
+
 }

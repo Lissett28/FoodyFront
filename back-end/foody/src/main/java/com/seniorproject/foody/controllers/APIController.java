@@ -7,6 +7,8 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -16,8 +18,11 @@ import java.util.Random;
 @CrossOrigin("http://localhost:4200")
 @RestController
 @RequestMapping("/api/v2/locate")
-
+@PropertySource("application.properties")
 public class APIController {
+
+    @Value("${yelpkey.api}")
+    private String apikey;
 
     @GetMapping(value="find/{address}&{radius}",produces = "application/json")
     public ResponseResult findByAddressAndRadius(@PathVariable("address") String address,
@@ -39,7 +44,7 @@ public class APIController {
                 .build();
         Request request = new Request.Builder()
                 .url(search_url)
-                .addHeader("Authorization", "Bearer api-key")
+                .addHeader("Authorization", apikey)
                 .build();
 
         Response response = client.newCall(request).execute();

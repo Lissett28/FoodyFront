@@ -1,14 +1,11 @@
 package com.seniorproject.foody.security;
 
 import com.seniorproject.foody.entities.AppUser;
-import com.seniorproject.foody.security.InMemorySessionRegistry;
 import com.seniorproject.foody.services.AppUserService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -24,7 +21,7 @@ import java.io.IOException;
 public class SessionFilter extends OncePerRequestFilter {
 
 
-    private final InMemorySessionRegistry sessionRegistry;
+    private final SessionRegistry sessionRegistry;
     private final AppUserService appUserService;
 
 
