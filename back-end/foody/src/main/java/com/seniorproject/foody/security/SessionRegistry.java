@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.UUID;
 
 @Component
-public class InMemorySessionRegistry {
+public class SessionRegistry {
     private static final HashMap<String,String> SESSIONS = new HashMap<>();
 
     public String registerSession(final String username){

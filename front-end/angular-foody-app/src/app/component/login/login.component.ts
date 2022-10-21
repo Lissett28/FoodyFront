@@ -16,10 +16,10 @@ export class LoginComponent {
   }
 
   login() {
-    this.authService.authenticate(this.credentials, () => {
-        
-    });
-    return false;
+    // use our authService to authenticate
+    this.authService.authenticate(this.credentials)
+    if(!this.authService.authenticated) this.error = true;
+    else this.router.navigateByUrl('/about');
   }
 
 }

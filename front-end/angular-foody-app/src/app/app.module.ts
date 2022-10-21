@@ -10,8 +10,9 @@ import { HeaderComponent } from './component/header/header.component';
 import { AboutComponent } from './component/about/about.component';
 import { ContactComponent } from './component/contact/contact.component';
 import { LoginComponent } from './component/login/login.component';
-import { HttpInterceptorService } from './service/http-interceptor.service';
 import { AuthService } from './service/auth.service';
+import { RequestInterceptor } from './interceptor/request.interceptor';
+import { SignupComponent } from './component/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AuthService } from './service/auth.service';
     AboutComponent,
     ContactComponent,
     LoginComponent,
+    SignupComponent,
     
   ],
   imports: [
@@ -31,12 +33,9 @@ import { AuthService } from './service/auth.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [
-    AuthService,
+  providers: [ 
     {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpInterceptorService,
-      multi: true
+      provide:HTTP_INTERCEPTORS,useClass:RequestInterceptor,multi:true
     }
   ],
   bootstrap: [AppComponent]
