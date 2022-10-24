@@ -5,7 +5,9 @@ import { AuthService } from 'src/app/service/auth.service';
 import { FalseLiteral } from 'typescript';
 
 @Component({
-  templateUrl: './login.component.html'
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
   error = false;

@@ -5,7 +5,8 @@
                 <li><a routerLink="about">About</a></li>
                 <li><a routerLink="explore">Explore</a></li>
                 <li><a routerLink="contact">Contact</a></li>
-                <li><a routerLink="login">Login in</a></li>
+                <li *ngIf="!signin"><a routerLink="login">Login in</a></li>
+                <li *ngIf="signin"><a routerLink="account">Hi, {{displayName}} </a></li>
             </ul>
         </nav>
     </div>

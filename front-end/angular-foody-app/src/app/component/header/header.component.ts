@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/service/auth.service';
 import { SearchServiceService } from 'src/app/service/search-service.service';
 
 @Component({
@@ -7,11 +8,13 @@ import { SearchServiceService } from 'src/app/service/search-service.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  signin:boolean;
+  displayName:string;
+  constructor(private authService:AuthService) { }
 
   ngOnInit(): void {
-    
+    this.authService.authenticated.subscribe(res => this.signin = res);
+    this.authService.userDisplayName.subscribe(res => this.displayName = res);
   }
 
 }

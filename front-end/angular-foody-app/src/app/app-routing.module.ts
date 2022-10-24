@@ -9,7 +9,7 @@ import { AuthenticationGuard } from './guard/authentication.guard';
 const routes: Routes = [
   // now lets set the guard at the begining 
   {path:'',canActivate:[AuthenticationGuard],children:[
-
+    {path: 'login', component: LoginComponent}
   ]},
   // by defualt we should be route to homepage
   {path: 'login', component: LoginComponent},

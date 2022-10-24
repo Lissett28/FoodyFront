@@ -1,13 +1,16 @@
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  authenticated = false;
+  authenticated:Subject<boolean> = new Subject<boolean>();
   sessionId: any = "";
+  userDisplayName:Subject<string> = new Subject<string>();
+
 
 
   constructor(private http: HttpClient) {
@@ -21,12 +24,12 @@ export class AuthService {
             (res) => {
             if(res) {
                 this.sessionId = res.sessionId;
-
+                this.userDisplayName.next(res.displayName);
                 sessionStorage.setItem(
                     'token',
                     this.sessionId
                 );
-                this.authenticated = true;
+                this.authenticated.next(true);
                 
                 router.navigateByUrl('/about');
                 
