@@ -13,11 +13,12 @@ export class AuthService {
   constructor(private http: HttpClient) {
   }
 
-  authenticate(credentials){
+    authenticate(credentials,error,router){
         
         const usernamePassword = window.btoa(credentials.username + ':' + credentials.password);
         
-        this.http.post<any>('http://localhost:8080/api/v1/login', usernamePassword).subscribe(res => {
+        this.http.post<any>('http://localhost:8080/api/v1/login', usernamePassword).subscribe(
+            (res) => {
             if(res) {
                 this.sessionId = res.sessionId;
 
@@ -27,10 +28,17 @@ export class AuthService {
                 );
                 this.authenticated = true;
                 
-            }else {
-                alert("authentication failed")
+                router.navigateByUrl('/about');
+                
             }
-        });
+            },
+            (error) =>{
+                error = true;
+                console.log('error');
+                
+            }
+
+        );
     }
 }
 

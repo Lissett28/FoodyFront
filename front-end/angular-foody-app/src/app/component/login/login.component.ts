@@ -9,17 +9,17 @@ import { FalseLiteral } from 'typescript';
 })
 export class LoginComponent {
   error = false;
-
   credentials = {username: '', password: ''};
+
 
   constructor(private authService: AuthService, private http: HttpClient, private router: Router) {
   }
 
   login() {
     // use our authService to authenticate
-    this.authService.authenticate(this.credentials)
-    if(!this.authService.authenticated) this.error = true;
-    else this.router.navigateByUrl('/about');
+    this.authService.authenticate(this.credentials,this.error,this.router);
+    this.error = !this.authService.authenticated;
   }
+  
 
 }
