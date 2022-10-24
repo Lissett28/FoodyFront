@@ -41,7 +41,7 @@ public class AppUser implements UserDetails {
     @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
     private Boolean locked = false;
-    private Boolean enabled = true;
+    private Boolean enabled = false;
 
     public AppUser(String fistName, String lastName,
                    String displayName, String email,

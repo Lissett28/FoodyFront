@@ -1,15 +1,16 @@
 package com.seniorproject.foody.services;
 
-import com.seniorproject.foody.config.PasswordEncoder;
 import com.seniorproject.foody.dao.AppUserRepository;
 import com.seniorproject.foody.entities.AppUser;
+import com.seniorproject.foody.entities.ConfirmationToken;
 import lombok.AllArgsConstructor;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -18,6 +19,7 @@ public class AppUserService implements UserDetailsService {
     private final static String USER_NOT_FOUND_MSG = "username %s not found";
     private final AppUserRepository appUserRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final ConfirmationTokenService confirmationTokenService;
 
 
     @Override
@@ -42,11 +44,21 @@ public class AppUserService implements UserDetailsService {
 
         appUserRepository.save(appUser);
 
-        //TODO: Send confirmation token
+        String token = UUID.randomUUID().toString();
+        // creates a token and save with confirmationtokenservice
+        ConfirmationToken confirmationToken = new ConfirmationToken(
+                token,
+                LocalDateTime.now(),
+                LocalDateTime.now().plusMinutes(15),
+                appUser
+        );
 
-
-        return "it works";
+        confirmationTokenService.saveConfirmationToken(confirmationToken);
+        return token;
     }
 
 
+    public void enableAppUser(String username) {
+        appUserRepository.findByUsername(username).get().setEnabled(true);
+    }
 }
