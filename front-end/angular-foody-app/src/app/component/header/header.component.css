@@ -1,11 +1,12 @@
 
 .header__container{
-    font-family: 'Silkscreen', cursive;
-    background: var(--color-primary);
+    font-family: "Georgia", Times, serif;
+    background: var(--color-primary-variant2);
     color: white;
     display: grid;
     grid-template-columns: 70% 10%;
     gap: 20%;
+    margin-bottom: 20px;
 }
 .logo__container{
     height: 70%;
@@ -29,9 +30,14 @@ nav{
     display: block;
     display: flex;
     padding: 16px;
-   
+    top: 3%;
 
 }
+
+li a:hover {
+    background: var(--color-hover);
+  }
+
 ul{
     list-style: none;
     display: flex;
