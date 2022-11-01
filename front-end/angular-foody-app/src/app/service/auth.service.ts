@@ -1,13 +1,13 @@
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  authenticated:Subject<boolean> = new Subject<boolean>();
+  authenticated:Subject<boolean> = new BehaviorSubject<boolean>(false);
   sessionId: any = "";
   userDisplayName:Subject<string> = new Subject<string>();
 
