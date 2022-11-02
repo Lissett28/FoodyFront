@@ -1,14 +1,34 @@
-<div class="alert alert-danger" [hidden]="!error">
-	There was a problem logging in. Please try again.
+<div class="container signup__container">
+	<div class="signup__form">
+		<h1>Sign Up</h1>
+		<form [formGroup]="registerFromGroup" (ngSubmit)="onSubmit()">
+
+			<div formGrouName="appuser" class="from__area">
+				<input fromControlName="firstName" type="text" placeholder="First name">
+				<br/>
+				<input fromControlName="lastName" type="text" placeholder="Surname">
+				<br/>
+				<input fromControlName="email" type="text" placeholder="Email address">
+				<br/>
+				<input fromControlName="username" type="text" placeholder="New username">
+				<br/>
+				<input fromControlName="password" type="text" placeholder="New password">
+				<br/>
+				<input fromControlName="displayName" type="text" placeholder="New nametag">
+			</div>
+			
+
+			<div formGroupName="userprof" class="form__area">
+				<h5>Getting to know you a little more</h5>
+				<input fromControlName="street" type="text" placeholder="Address">
+				<input fromControlName="city" type="text" placeholder="City">
+				<input fromControlName="state" type="text" placeholder="State">
+				<input fromControlName="zipCode" type="text" placeholder="Zip Code">
+			</div>
+			
+			<div class="btn__container">
+				<button type="submit" class="btn btn-primary">Log In</button>
+			</div>
+		</form>
+	</div>
 </div>
-<form role="form" (submit)="signup()">
-	<div class="form-group">
-		<label for="username">Username:</label> <input type="text"
-			class="form-control" id="username" name="username" [(ngModel)]="credentials.username"/>
-	</div>
-	<div class="form-group">
-		<label for="password">Password:</label> <input type="password"
-			class="form-control" id="password" name="password" [(ngModel)]="credentials.password"/>
-	</div>
-	<button type="submit" class="btn btn-primary">Login</button>
-</form>

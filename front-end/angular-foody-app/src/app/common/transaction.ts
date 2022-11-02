@@ -1,4 +1,4 @@
 export class Transaction {
-    type:string;
+    type:String;
     
 }

@@ -3,8 +3,8 @@ import { InquiryDetail } from "./inquiry-detail";
 
 export class Inquiry {
     customer:Customer;
-    inquiryTrackingNumber:string;
-    status:string;
+    inquiryTrackingNumber:String;
+    status:String;
     InquiryDetails:InquiryDetail[];
     
 }

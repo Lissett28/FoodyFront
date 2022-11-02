@@ -1,6 +1,6 @@
 export class InquiryDetail {
-    message:string;
-    constructor(message:string){
+    message:String;
+    constructor(message:String){
         this.message = message;
     }
 }

@@ -1,4 +1,4 @@
 export class Category {
-    alias:string;
-    title:string;
+    alias:String;
+    title:String;
 }

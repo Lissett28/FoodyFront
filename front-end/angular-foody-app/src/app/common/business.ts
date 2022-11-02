@@ -4,18 +4,18 @@ import { Transaction } from "./transaction";
 
 
 export class Business {
-    id: string;
-    alias: string;
-    name: string;
-    image_url: string;
-    is_closed: boolean;
-    url:string;
-    review_count:number;
+    id: String;
+    alias: String;
+    name: String;
+    image_url: String;
+    is_closed: Boolean;
+    url:String;
+    review_count:Number;
     categories:Category[];
-    rating:number;
+    rating:Number;
     transactions:Transaction[];
-    price:string;
+    price:String;
     location:Locationmap;
-    phone:string;
-    distance:number;
+    phone:String;
+    distance:Number;
 }
