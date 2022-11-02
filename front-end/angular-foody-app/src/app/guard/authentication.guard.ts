@@ -13,7 +13,7 @@ export class AuthenticationGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
       // we are allowed to go to login
-      if(state.url == "/login"){
+      if(state.url == "/about"){
         return true;
       }
 
@@ -23,7 +23,7 @@ export class AuthenticationGuard implements CanActivate {
 
       // if token is not there that means you are not logged in 
       if(!token){
-        return this.router.parseUrl('/login');
+        return this.router.parseUrl('/about');
       }
 
       return true;

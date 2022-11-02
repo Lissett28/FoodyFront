@@ -11,16 +11,18 @@ import { AuthenticationGuard } from './guard/authentication.guard';
 const routes: Routes = [
   // now lets set the guard at the begining 
   {path:'',canActivate:[AuthenticationGuard],children:[
+    {path: 'about', component: AboutComponent},
     {path: 'login', component: LoginComponent},
     {path: 'explore', component: HomepageComponent},
     {path: 'contact', component: ContactComponent},
-    {path: 'about', component: AboutComponent},
     {path: 'signup', component:SignupComponent},
     {path: 'login/signup',redirectTo: '/signup', pathMatch:'full'},
+    {path: '**', component: AboutComponent},
+    
   ]},
   // by defualt we should be route to homepage
   {path:'account',component:AccountComponent},
-  {path: '**', component: HomepageComponent}
+  {path: '**', component: AboutComponent}
 ];
 
 @NgModule({

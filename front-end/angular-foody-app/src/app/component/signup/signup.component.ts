@@ -53,6 +53,7 @@ export class SignupComponent implements OnInit {
     //registerInstructions.firstName = this.registerFromGroup.get('appuser').value;
     registerInstructions = this.registerFromGroup.value;
     registerInstructions.lastNameInit = registerInstructions.lastName.charAt(0).toUpperCase().concat(".");
+    registerInstructions.memberSince = new Date();
     this.registerService.register(registerInstructions);
   }
 }

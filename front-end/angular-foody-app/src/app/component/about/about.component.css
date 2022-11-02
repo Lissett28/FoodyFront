@@ -1,0 +1,27 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 56px;
+}
+
+.aboutheader__btn{
+    padding-left: 16px;
+    padding-right: 16px;
+    background-color: var(--color-primary);
+    color: var(--color-primary);
+    white-space: nowrap;
+    transition-property: background-color,opacity;
+    display: inline-block;
+    padding: 3px 0 6px;
+    border-radius: 16.5px;
+    outline: none;
+    font: 200;
+    color: var(--color-white);
+}
+
+.headernav__list{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Userprofile } from 'src/app/common/userprofile';
 import { AuthService } from 'src/app/service/auth.service';
-import { SearchServiceService } from 'src/app/service/search-service.service';
 
 @Component({
   selector: 'app-header',
@@ -13,8 +13,13 @@ export class HeaderComponent implements OnInit {
   constructor(private authService:AuthService) { }
 
   ngOnInit(): void {
-    this.authService.authenticated.subscribe(res => this.signin = res);
-    this.authService.userprofile.subscribe(res => this.displayName = res.displayName);
+    let user = JSON.parse(sessionStorage.getItem("userDetails")) as Userprofile;
+    if(!user){
+      this.signin = false;
+    }else{
+      this.signin = true;
+    }
+    this.displayName = user.displayName;
   }
 
 }

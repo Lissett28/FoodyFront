@@ -7,7 +7,7 @@ import { Userprofile } from '../common/userprofile';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService {password
   authenticated:Subject<boolean> = new BehaviorSubject<boolean>(false);
   sessionId: any = "";
   userprofile:Subject<Userprofile> = new Subject<Userprofile>();
@@ -39,6 +39,7 @@ export class AuthService {
                     'token',
                     this.sessionId
                 );
+                sessionStorage.setItem('userDetails',JSON.stringify(user)); // store the user details
                 this.authenticated.next(true);
                 
                 router.navigateByUrl('/about');

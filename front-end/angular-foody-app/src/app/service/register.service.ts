@@ -13,7 +13,7 @@ export class RegisterService {
   constructor(private httpClient:HttpClient) { }
 
   register(registerInstructions:RegisterInstructions){
-    this.httpClient.post<RegisterInstructions>(this.baseUrl,registerInstructions).subscribe(
+    this.httpClient.post<RegisterInstructions>('http://localhost:8080/api/v1/registration',registerInstructions).subscribe(
       (res) =>{
         if(res){
           console.log(res);
