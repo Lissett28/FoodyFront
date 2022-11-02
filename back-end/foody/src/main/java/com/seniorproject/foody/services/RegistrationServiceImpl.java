@@ -4,7 +4,9 @@ import com.seniorproject.foody.dto.RegistrationRequest;
 import com.seniorproject.foody.entities.AppUser;
 import com.seniorproject.foody.entities.AppUserRole;
 import com.seniorproject.foody.entities.ConfirmationToken;
+import com.seniorproject.foody.entities.Userprofile;
 import lombok.AllArgsConstructor;
+import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,17 +25,27 @@ public class RegistrationServiceImpl implements RegistrationService {
         if(!validEmail){
             throw new IllegalStateException("email not valid");
         }
+        Userprofile userprofile = new Userprofile(
+                request.getFirstName(),
+                request.getLastNameInit(),
+                request.getMemberSince(),
+                request.getStreet(),
+                request.getCity(),
+                request.getState(),
+                request.getZipCode()
+        );
+        AppUser appUser = new AppUser(request.getFirstName(),
+                request.getLastName(),
+                request.getDisplayName(),
+                request.getEmail(),
+                request.getUsername(),
+                request.getPassword(),
+                AppUserRole.USER);
+        userprofile.setAppUser(appUser);
+        appUser.setUserprofile(userprofile);
 
         String token = appUserService.signUpUser(
-                new AppUser(
-                        request.getFirstName(),
-                        request.getLastName(),
-                        request.getDisplayName(),
-                        request.getEmail(),
-                        request.getUsername(),
-                        request.getPassword(),
-                        AppUserRole.USER
-                )
+            appUser
         );
 
         String link = "http://localhost:8080/api/v1/registration/confirm?token=" + token;

@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -29,6 +31,7 @@ public class AppUser implements UserDetails {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
             generator = "user_sequence"
     )
+    @Column(name="id")
     private Long id;
 
     private String fistName;
@@ -38,10 +41,15 @@ public class AppUser implements UserDetails {
     private String username;
     private String password;
 
+    @OneToOne(mappedBy = "appUser",cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Userprofile userprofile;
+
     @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
     private Boolean locked = false;
     private Boolean enabled = false;
+
 
     public AppUser(String fistName, String lastName,
                    String displayName, String email,
@@ -57,6 +65,9 @@ public class AppUser implements UserDetails {
 
     }
 
+    public void setUserprofile(Userprofile userprofile) {
+        this.userprofile = userprofile;
+    }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(appUserRole.name());

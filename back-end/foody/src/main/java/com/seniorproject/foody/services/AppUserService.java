@@ -4,6 +4,8 @@ import com.seniorproject.foody.dao.AppUserRepository;
 import com.seniorproject.foody.entities.AppUser;
 import com.seniorproject.foody.entities.ConfirmationToken;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,7 +22,7 @@ public class AppUserService implements UserDetailsService {
     private final AppUserRepository appUserRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConfirmationTokenService confirmationTokenService;
-
+    private static Logger logger = LoggerFactory.getLogger(AppUserService.class);
 
     @Override
     public AppUser loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -41,6 +43,8 @@ public class AppUserService implements UserDetailsService {
         String encodedPassword = bCryptPasswordEncoder.encode(appUser.getPassword());
 
         appUser.setPassword(encodedPassword);
+
+        //logger.info(appUser.getUserprofile().getFirstName());
 
         appUserRepository.save(appUser);
 
