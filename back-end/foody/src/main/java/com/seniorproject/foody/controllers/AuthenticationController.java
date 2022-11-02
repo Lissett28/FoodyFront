@@ -3,6 +3,7 @@ package com.seniorproject.foody.controllers;
 import com.seniorproject.foody.dto.AuthenticationResponse;
 import com.seniorproject.foody.dto.UsernameAndPasswordAuthenticationRequest;
 import com.seniorproject.foody.entities.AppUser;
+import com.seniorproject.foody.entities.Userprofile;
 import com.seniorproject.foody.security.SessionRegistry;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -40,8 +41,15 @@ public class AuthenticationController {
         AuthenticationResponse authenticationResponse = new AuthenticationResponse();
         authenticationResponse.setSessionId(sessionId);
         AppUser appUser = (AppUser) authentication.getPrincipal();
+        Userprofile userprofile = appUser.getUserprofile();
+        authenticationResponse.setCity(userprofile.getCity());
+        authenticationResponse.setFirstName(userprofile.getFirstName());
+        authenticationResponse.setLastNameInit(userprofile.getLastNameInit());
+        authenticationResponse.setMemberSince(userprofile.getMemberSince());
+        authenticationResponse.setState(userprofile.getState());
+        authenticationResponse.setZipCode(userprofile.getZipCode());
         authenticationResponse.setDisplayName(appUser.getDisplayName());
-        authenticationResponse.setJwtToken(buildJwtToken(authentication));
+        authenticationResponse.setStreet(userprofile.getStreet());
         return ResponseEntity.ok(authenticationResponse);
     }
 
@@ -52,6 +60,7 @@ public class AuthenticationController {
     }
 
 
+    /* we are not using jwttoken
     private String buildJwtToken(Authentication authResult){
         // create a jwt token and send to our client
         String token = Jwts.builder()
@@ -63,6 +72,8 @@ public class AuthenticationController {
         String res = ("Authorization: " + "Bearer " + token);
         return res;
     }
+
+     */
 
 
 }

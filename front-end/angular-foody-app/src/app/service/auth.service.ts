@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { Userprofile } from '../common/userprofile';
 
 
 @Injectable({
@@ -9,7 +10,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class AuthService {
   authenticated:Subject<boolean> = new BehaviorSubject<boolean>(false);
   sessionId: any = "";
-  userDisplayName:Subject<string> = new Subject<string>();
+  userprofile:Subject<Userprofile> = new Subject<Userprofile>();
 
 
 
@@ -24,7 +25,16 @@ export class AuthService {
             (res) => {
             if(res) {
                 this.sessionId = res.sessionId;
-                this.userDisplayName.next(res.displayName);
+                let user = new Userprofile();
+                user.state = res.state;
+                user.city = res.city;
+                user.firstName = res.firstName;
+                user.lastNameInit = res.lastNameInit;
+                user.memberSince = res.memberSince;
+                user.street = res.street;
+                user.zipCode = res.zipCode;
+                user.displayName = res.displayName;
+                this.userprofile.next(user);
                 sessionStorage.setItem(
                     'token',
                     this.sessionId

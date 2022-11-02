@@ -2,33 +2,29 @@
 	<div class="signup__form">
 		<h1>Sign Up</h1>
 		<form [formGroup]="registerFromGroup" (ngSubmit)="onSubmit()">
+			<input formControlName="firstName" type="text" placeholder="First name"/>
+			<br/>
+			<input formControlName="lastName" type="text" placeholder="Surname"/>
+			<br/>
+			<input formControlName="email" type="text" placeholder="Email address"/>
+			<br/>
+			<input formControlName="username" type="text" placeholder="New username"/>
+			<br/>
+			<input formControlName="password" type="text" placeholder="New password"/>
+			<br/>
+			<input formControlName="displayName" type="text" placeholder="New nametag"/>
 
-			<div formGrouName="appuser" class="from__area">
-				<input fromControlName="firstName" type="text" placeholder="First name">
-				<br/>
-				<input fromControlName="lastName" type="text" placeholder="Surname">
-				<br/>
-				<input fromControlName="email" type="text" placeholder="Email address">
-				<br/>
-				<input fromControlName="username" type="text" placeholder="New username">
-				<br/>
-				<input fromControlName="password" type="text" placeholder="New password">
-				<br/>
-				<input fromControlName="displayName" type="text" placeholder="New nametag">
-			</div>
+			<h5>Getting to know you a little more</h5>
+			<input formControlName="street" type="text" placeholder="Address"/>
+			<input formControlName="city" type="text" placeholder="City"/>
+			<input formControlName="state" type="text" placeholder="State"/>
+			<input formControlName="zipCode" type="text" placeholder="Zip Code"/>
 			
-
-			<div formGroupName="userprof" class="form__area">
-				<h5>Getting to know you a little more</h5>
-				<input fromControlName="street" type="text" placeholder="Address">
-				<input fromControlName="city" type="text" placeholder="City">
-				<input fromControlName="state" type="text" placeholder="State">
-				<input fromControlName="zipCode" type="text" placeholder="Zip Code">
-			</div>
 			
 			<div class="btn__container">
-				<button type="submit" class="btn btn-primary">Log In</button>
+				<button type="submit" class="btn btn-primary">Sign up</button>
 			</div>
+
 		</form>
 	</div>
 </div>

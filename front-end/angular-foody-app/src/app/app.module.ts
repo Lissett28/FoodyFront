@@ -12,6 +12,7 @@ import { LoginComponent } from './component/login/login.component';
 import { AuthService } from './service/auth.service';
 import { RequestInterceptor } from './interceptor/request.interceptor';
 import { SignupComponent } from './component/signup/signup.component';
+import { AccountComponent } from './component/account/account.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SignupComponent } from './component/signup/signup.component';
     ContactComponent,
     LoginComponent,
     SignupComponent,
+    AccountComponent,
     
   ],
   imports: [

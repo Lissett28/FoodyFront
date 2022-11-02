@@ -1,5 +1,3 @@
-import { StringLiteral } from "typescript";
-import { Userprofile } from "./userprofile";
 
 export class RegisterInstructions {
     firstName:String;
@@ -8,5 +6,10 @@ export class RegisterInstructions {
     username:String;
     password:String;
     displayName:String;
-    userProfile:Userprofile;
+    memberSince:Date;
+    street:String;
+    city:String;
+    state:String;
+    zipCode:String;
+    lastNameInit:String;
 }

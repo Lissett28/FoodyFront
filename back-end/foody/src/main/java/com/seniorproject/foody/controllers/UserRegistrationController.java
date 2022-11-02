@@ -5,6 +5,7 @@ import com.seniorproject.foody.services.RegistrationServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin("http://localhost:4200")
 @RestController
 @RequestMapping("api/v1/registration")
 @AllArgsConstructor

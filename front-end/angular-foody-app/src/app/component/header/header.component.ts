@@ -9,12 +9,12 @@ import { SearchServiceService } from 'src/app/service/search-service.service';
 })
 export class HeaderComponent implements OnInit {
   signin:boolean;
-  displayName:string;
+  displayName:String;
   constructor(private authService:AuthService) { }
 
   ngOnInit(): void {
     this.authService.authenticated.subscribe(res => this.signin = res);
-    this.authService.userDisplayName.subscribe(res => this.displayName = res);
+    this.authService.userprofile.subscribe(res => this.displayName = res.displayName);
   }
 
 }
