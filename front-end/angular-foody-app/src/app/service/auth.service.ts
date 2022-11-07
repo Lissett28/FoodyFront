@@ -49,7 +49,6 @@ export class AuthService {password
             (error) =>{
                 error = true;
                 console.log('error');
-                
             }
 
         );
