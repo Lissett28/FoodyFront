@@ -54,13 +54,20 @@ html{
 
 body{
     /* fonts */
+    /*
     font-family: 'Permanent Marker', cursive;
     font-family: 'Poppins', sans-serif;
     color: var(--color-black);
     line-height: 1.7;
     /* background */
+    /*
     background-color: var(--color-bg);
     background-image: url(./assets/diagmonds-light.png);
+    */
+    background: radial-gradient(at bottom right, #ffb600 0, #ffb600 25px, rgba(255,182,0,0.2) 25px, rgba(255,182,0,0.2) 50px, rgba(255,182,0,0.75) 50px, rgba(255,182,0,0.75) 75px, rgba(255,182,0,0.25) 75px, rgba(255,182,0,0.25) 100px, rgba(255,182,0,0.3) 100px, rgba(255,182,0,0.3) 125px, rgba(255,182,0,0.75) 125px, rgba(255,182,0,0.75) 150px, rgba(255,182,0,0.2) 150px, rgba(255,182,0,0.2) 175px, transparent 175px, transparent 200px), radial-gradient(at top left, transparent 0, transparent 25px, rgba(255,182,0,0.2) 25px, rgba(255,182,0,0.2) 50px, rgba(255,182,0,0.75) 50px, rgba(255,182,0,0.75) 75px, rgba(255,182,0,0.3) 75px, rgba(255,182,0,0.3) 100px, rgba(255,182,0,0.25) 100px, rgba(255,182,0,0.25) 125px, rgba(255,182,0,0.75) 125px, rgba(255,182,0,0.75) 150px, rgba(255,182,0,0.2) 150px, rgba(255,182,0,0.2) 175px, #ffb600 175px, #ffb600 200px, transparent 200px, transparent 500px);
+    background-blend-mode: multiply;
+    background-size: 200px 200px, 200px 200px;
+    background-color: rgba(246, 217, 34, 0.83);
 }
 
 /* GENERAL STYLES */
