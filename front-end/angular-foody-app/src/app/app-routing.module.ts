@@ -17,7 +17,7 @@ const routes: Routes = [
     {path: 'contact', component: ContactComponent},
     {path: 'signup', component:SignupComponent},
     {path: 'login/signup',redirectTo: '/signup', pathMatch:'full'},
-    
+    {path: 'about/login',redirectTo: '/login', pathMatch:'full'},
   ]},
   // by defualt we should be route to homepage
   {path:'account',component:AccountComponent},
