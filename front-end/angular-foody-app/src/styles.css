@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;400;500;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Titan+One&display=swap');
+
+/* imports */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;900&display=swap');
+
 
 *{
     /* style resets*/
@@ -16,8 +19,7 @@
 /* main page style*/
 :root{
     /* css variables */
-    /* for easy to update the page colors */
-
+    
     /* colors */
     --color-bg: #fa8e00;
     --color-bg-variant: #2a9d8f;
@@ -28,17 +30,23 @@
     --color-hover: #FFDA00;
     --color-white:#fff;
     --color-black:rgb(0, 0, 0);
-    --color-light:#dcdcdcab;
+    --color-light:rgba(255, 255, 255, 0.758);
     
 
     /* container */
     --container-width-lg: 100%;
-    --container-width-md: 86%;
-    --container-width-sm: 90%;
+    --container-width-md: 100%;
+    --container-width-sm: 100%;
 
     /* transition */
-    --transition: all 400ms ease;
+    --transition-400: all 400ms ease;
+    --transition-100: all 100ms ease;
 
+    /* fonts */
+    --fonts-logo: 'Roboto', sans-serif;
+    --fonts-black: 900;
+    --fonts-regular: 400;
+    --fonts-hero: 'Bebas Neue', cursive;
 }
 
 html{
@@ -60,14 +68,17 @@ body{
     color: var(--color-black);
     line-height: 1.7;
     /* background */
+    
     /*
     background-color: var(--color-bg);
     background-image: url(./assets/diagmonds-light.png);
     */
+    
     background: radial-gradient(at bottom right, #ffb600 0, #ffb600 25px, rgba(255,182,0,0.2) 25px, rgba(255,182,0,0.2) 50px, rgba(255,182,0,0.75) 50px, rgba(255,182,0,0.75) 75px, rgba(255,182,0,0.25) 75px, rgba(255,182,0,0.25) 100px, rgba(255,182,0,0.3) 100px, rgba(255,182,0,0.3) 125px, rgba(255,182,0,0.75) 125px, rgba(255,182,0,0.75) 150px, rgba(255,182,0,0.2) 150px, rgba(255,182,0,0.2) 175px, transparent 175px, transparent 200px), radial-gradient(at top left, transparent 0, transparent 25px, rgba(255,182,0,0.2) 25px, rgba(255,182,0,0.2) 50px, rgba(255,182,0,0.75) 50px, rgba(255,182,0,0.75) 75px, rgba(255,182,0,0.3) 75px, rgba(255,182,0,0.3) 100px, rgba(255,182,0,0.25) 100px, rgba(255,182,0,0.25) 125px, rgba(255,182,0,0.75) 125px, rgba(255,182,0,0.75) 150px, rgba(255,182,0,0.2) 150px, rgba(255,182,0,0.2) 175px, #ffb600 175px, #ffb600 200px, transparent 200px, transparent 500px);
     background-blend-mode: multiply;
     background-size: 200px 200px, 200px 200px;
     background-color: rgba(246, 217, 34, 0.83);
+    
 }
 
 /* GENERAL STYLES */
@@ -76,29 +87,7 @@ body{
     margin: 0 auto;
 }
 
-h1, h2, h3, h4, h5{
-    font-weight: 500;
 
-}
-
-h1{
-    font-size: 2.5rem;
-}
-
-section{
-    margin-top: 8rem;
-}
-section > h2, section > h5{
-    text-align: center;
-    color: var(--color-light);
-}
-section >h2{
-    color: var(--color-primary);
-    margin-bottom: 3rem;
-}
-.text-light{
-    color: var(--color-light);
-}
 a{
     color: var(--color-primary);
     transition: var(--transition);

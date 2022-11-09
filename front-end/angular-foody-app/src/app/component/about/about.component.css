@@ -1,27 +1,123 @@
+.about__container{
+    display: grid;
+    grid-template-rows: auto;
+    gap: 5%;
+    background-color: #FFFFFF;
+    height: 100%;
+}
+
 header{
+    z-index: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
     min-height: 56px;
 }
-
-.aboutheader__btn{
-    padding-left: 16px;
-    padding-right: 16px;
-    background-color: var(--color-primary);
-    color: var(--color-primary);
-    white-space: nowrap;
-    transition-property: background-color,opacity;
-    display: inline-block;
-    padding: 3px 0 6px;
-    border-radius: 16.5px;
-    outline: none;
-    font: 200;
+.headernav_btn{
+    background-color: transparent;
     color: var(--color-white);
+    font-size: 16px;
+}
+.headernav_btn:hover{
+    transition: var(--transition-100);
+    color: var(--color-light);
+}
+
+.about__logo{
+    font-family: var(--fonts-logo);
+    font-weight: var(--fonts-black);
+    font-size: 25px;
+    padding-left: 29px;
+    color: white;
+}
+.about__logo:hover{
+    transition: var(--transition-100);
+    color: var(--color-light);
+}
+.aboutheader__btn{
+    margin-right: 29px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    backdrop-filter: blur(15px);
+    background-color: rgba(0, 0, 0, 0.1);
+    color: var(--color-white);
+    border-radius: 16.5px;
+    font-size: 16px;
+}
+
+.aboutheader__btn:hover{
+    transition: var(--transition-400);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .headernav__list{
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    gap: 10%;
+}
+
+.about__hero-img__container{
+    position: absolute;
+    top: 0;
+    background-size: cover;
+    background-image: linear-gradient(to top,rgba(255, 255, 255, 0.338), rgba(0, 0, 0, 0.26)),
+    url(../../../assets/about-heroimg.avif);
+    height: 550px;
+    overflow: hidden;
+}
+
+.about__content{
+    z-index: 1;
+    height: 1000px;
+    font-family: var(--fonts-hero);
+
+    
+}
+.about__content > h2{
+    color: white;
+    padding-left: 13%;
+    padding-top: 2%;
+    font-size: 100px;
+}
+.about__content > h1{
+    color: rgba(255, 255, 255, 0.386);
+    position: absolute;
+    padding-left: 33%;
+    top: 8%;
+    font-size: 300px;
+    overflow: hidden;
+}
+.about__content > h6{
+    padding-left: 10%;
+    color: white;
+    font-size: 13px;
+}
+.hero-image{
+    width: 100%;
+    overflow: hidden;
+}
+
+
+
+.custom-shape-divider-bottom-1668032691 {
+    position: relative;
+    bottom: -72%;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1668032691 svg {
+    position: relative;
+    display: block;
+    width: calc(300% + 1.3px);
+    height: 164px;
+}
+
+.custom-shape-divider-bottom-1668032691 .shape-fill {
+    fill: #FFFFFF;
 }
