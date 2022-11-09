@@ -103,19 +103,19 @@ header{
 
 .custom-shape-divider-bottom-1668032691 {
     position: relative;
-    bottom: -72%;
+    bottom: -69%;
     left: 0;
     width: 100%;
     overflow: hidden;
     line-height: 0;
-    transform: rotate(180deg);
+    transform: rotate(182deg);
 }
 
 .custom-shape-divider-bottom-1668032691 svg {
     position: relative;
     display: block;
     width: calc(300% + 1.3px);
-    height: 164px;
+    height: 194px;
 }
 
 .custom-shape-divider-bottom-1668032691 .shape-fill {
