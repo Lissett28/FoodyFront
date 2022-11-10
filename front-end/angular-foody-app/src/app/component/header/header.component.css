@@ -1,11 +1,17 @@
 
 .header__container{
     font-family: "Georgia", Times, serif;
-    background: var(--color-primary-variant2);
+    background: rgb(195,74,34);
+    background: linear-gradient(0deg, rgba(195,74,34,1) 0%, rgba(253,187,45,1) 100%);
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 1fr;
     margin-bottom: 20px;
+    padding-top: 1px;
+    padding-bottom: 7px;
+    border-width: 2px;
+    border-color: var(--color-black);
+    border-style: solid;
 }
 .navbar__container{
     grid-column-start: 2;
@@ -21,7 +27,7 @@
 }
 
 .logo{
-    height: 50px;
+    height: 45px;
     position: relative;
     top: 30%;
     bottom: 50%;
@@ -45,11 +51,19 @@ ul{
     display: flex;
     flex-direction: row;
     gap: 1rem;
+    font-weight: bold;
 }
 
 li a:hover {
     background: var(--color-hover);
 }
+
+
+Router.isActive {
+	color: red;
+	font-weight: bold;
+}
+
 
 /* MEDIA QUERIES */
 
