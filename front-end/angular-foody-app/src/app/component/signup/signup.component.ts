@@ -57,3 +57,6 @@ export class SignupComponent implements OnInit {
     this.registerService.register(registerInstructions);
   }
 }
+
+
+

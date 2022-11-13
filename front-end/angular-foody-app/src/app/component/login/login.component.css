@@ -5,12 +5,14 @@
     border-style: solid;
     border-width: 2px;
     background-color: var(--color-white);
+    margin: 30px;
 }
 
 
 .hero__container{
     grid-column-start: 1;
     grid-column-end: 2;
+    padding-bottom: 0px;
 }
 
 .form__container{
@@ -96,6 +98,7 @@ h2 span {
    height: auto;
    text-align: left;
 }
+
 
 /* MEDIA QUERIES */
 
